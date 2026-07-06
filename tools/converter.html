@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Families Converter</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#f4f4f4;
+
+padding:20px;
+
+}
+
+.container{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+h1{
+
+text-align:center;
+
+margin-bottom:20px;
+
+color:#ff6b00;
+
+}
+
+textarea{
+
+width:100%;
+
+height:280px;
+
+padding:15px;
+
+font-size:15px;
+
+resize:vertical;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+outline:none;
+
+margin-bottom:15px;
+
+}
+
+button{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ff6b00;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+margin-bottom:15px;
+
+}
+
+button:hover{
+
+background:#e65c00;
+
+}
+
+#output{
+
+height:350px;
+
+white-space:pre;
+
+font-family:monospace;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+
+Families JS Converter
+
+</h1>
+
+<textarea
+
+id="input"
+
+placeholder="Paste Raw Telugu Data Here">
+
+</textarea>
+
+<button id="convertBtn">
+
+Convert
+
+</button>
+
+<textarea
+
+id="output"
+
+placeholder="Generated families.js">
+
+</textarea>
+
+</div>
+
+<script>
+
+const gotramMap={
+
+"కామెళ్ళ":"kamella",
+
+"ఇక్ష్వాకుల":"ikshvakula",
+
+"పెండ్లికుల":"pendlikula",
+
+"బలిసెట్ల":"balisetla",
+
+"బలిశెట్ల":"balisetla",
+
+"పోగునోళ్ళ":"pogunolla",
+
+"బుధనకుల":"budhanakula",
+
+"నాభిళ్ళ":"nabhilla",
+
+"అనంతకుల":"ananthakula",
+
+"కామిశెట్ల":"kamishetla",
+
+"పుష్వాల":"pushwala",
+
+"సోలంకి కోడాలియా":"solanki",
+
+"నాగుల":"nagula",
+
+"పాపాళ":"papala",
+
+"పౌత్సకుల":"pautsakula",
+
+"పౌచ్చకుల":"pouchchakula",
+
+"ఎర్రగుల":"erragula",
+
+"రెంటకుల":"rentakula",
+
+"చినిశెట్ల":"chinishetla",
+
+"చిన్నిశెట్ల":"chinishetla",
+
+"పునగశిల":"punagashila",
+
+"జమ్మి":"jammi",
+
+"చంద్రకుల":"chandrakula",
+
+"వెలిశెట్ల":"velishetla",
+
+"సూర్యకుల":"suryakula"
+
+};
+document
+.getElementById("convertBtn")
+.addEventListener("click", convertData);
+
+function convertData() {
+
+    const input = document
+        .getElementById("input")
+        .value
+        .trim();
+
+    if (input === "") {
+
+        alert("Paste Raw Data First");
+
+        return;
+
+    }
+
+    const lines = input
+        .split("\n")
+        .filter(line => line.trim() !== "");
+
+    let output = "const families = [\n\n";
+
+    let id = 1;
+
+    lines.forEach(line => {
+
+        const parts = line.split(":");
+
+        if (parts.length < 2) return;
+
+        const gotram =
+            parts[0].trim();
+
+        const names =
+            parts[1]
+            .split(",")
+            .map(x => x.trim())
+            .filter(x => x !== "");
+
+        const head = names[0];
+
+        const searchKey =
+            gotramMap[gotram] || "";
+
+        output +=
+`{
+    id:${id},
+    gotram:"${gotram}",
+    searchKeys:["${searchKey}"],
+    head:"${head}",
+    members:[
+`;
+
+        names.forEach(member => {
+
+            output +=
+`        "${member}",
+`;
+
+        });
+
+        output +=
+`    ],
+    attended:false
+},
+
+`;
+
+        id++;
+
+    });
+
+    output += "];";
+
+    document
+        .getElementById("output")
+        .value = output;
+
+}
+// ==========================================
+// COPY OUTPUT
+// ==========================================
+
+const copyBtn = document.createElement("button");
+
+copyBtn.innerText = "Copy Output";
+
+copyBtn.style.marginTop = "10px";
+
+document
+.querySelector(".container")
+.appendChild(copyBtn);
+
+copyBtn.addEventListener("click", () => {
+
+    const output =
+        document.getElementById("output");
+
+    if (output.value.trim() === "") {
+
+        alert("Nothing to Copy");
+
+        return;
+
+    }
+
+    navigator.clipboard
+        .writeText(output.value);
+
+    alert("Copied Successfully");
+
+});
+
+
+// ==========================================
+// CLEAR
+// ==========================================
+
+const clearBtn = document.createElement("button");
+
+clearBtn.innerText = "Clear";
+
+clearBtn.style.marginTop = "10px";
+
+document
+.querySelector(".container")
+.appendChild(clearBtn);
+
+clearBtn.addEventListener("click", () => {
+
+    document
+        .getElementById("input")
+        .value = "";
+
+    document
+        .getElementById("output")
+        .value = "";
+
+});
+
+
+// ==========================================
+// TOTAL FAMILIES
+// ==========================================
+
+const countDiv =
+document.createElement("h3");
+
+countDiv.style.marginTop="20px";
+
+countDiv.style.textAlign="center";
+
+document
+.querySelector(".container")
+.appendChild(countDiv);
+
+document
+.getElementById("convertBtn")
+.addEventListener("click",()=>{
+
+const total=document
+.getElementById("input")
+.value
+.trim()
+.split("\n")
+.filter(x=>x.trim()!=="")
+.length;
+
+countDiv.innerText=
+"Total Families : "+total;
+
+});
