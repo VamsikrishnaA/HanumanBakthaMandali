@@ -1,0 +1,356 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Noto Sans Telugu',sans-serif;
+    background:#f5f5f5;
+    color:#222;
+}
+
+
+/* ===========================
+   APP
+=========================== */
+
+.app-container{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    padding:18px;
+}
+
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:55px;
+    margin-bottom:8px;
+}
+
+.header h1{
+    font-size:28px;
+    color:#ff6b00;
+    font-weight:700;
+}
+
+.header p{
+    margin-top:5px;
+    color:#666;
+    font-size:15px;
+}
+
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-section{
+    margin-bottom:18px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #ddd;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:15px;
+    font-size:16px;
+}
+
+#clearBtn{
+    width:48px;
+    height:48px;
+    border:none;
+    background:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+#clearBtn:hover{
+    background:#f2f2f2;
+}
+
+
+/* ===========================
+   GOTRAM BUTTON
+=========================== */
+
+.gotram-btn{
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#ff6b00;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.gotram-btn:hover{
+    background:#e55f00;
+}
+
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.empty-state{
+    text-align:center;
+    margin-top:70px;
+    color:#666;
+}
+
+.search-icon{
+    font-size:70px;
+    margin-bottom:12px;
+}
+
+.empty-state h2{
+    margin-bottom:10px;
+}
+
+.empty-state p{
+    line-height:1.8;
+}
+
+
+/* ===========================
+   RESULTS
+=========================== */
+
+.results-container{
+    margin-top:20px;
+}
+/* ===========================
+   FAMILY CARD
+=========================== */
+
+.family-card{
+    background:#fff;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    border-left:6px solid #ff6b00;
+    transition:.3s;
+}
+
+.family-card:hover{
+    transform:translateY(-2px);
+}
+
+.family-card.attended{
+    background:#ecfff1;
+    border-left:6px solid #1ea84a;
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.gotram-name{
+    display:inline-block;
+    background:#fff4e8;
+    color:#ff6b00;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.family-head{
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.members-title{
+    font-size:15px;
+    color:#777;
+    margin-bottom:8px;
+}
+
+.members-list{
+    list-style:none;
+}
+
+.members-list li{
+    padding:7px 0;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+}
+
+.members-list li:last-child{
+    border:none;
+}
+
+/* ===========================
+   CHECKBOX
+=========================== */
+
+.attendance-check{
+    width:24px;
+    height:24px;
+    cursor:pointer;
+    accent-color:#1ea84a;
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:999;
+}
+
+.modal-card,
+.popup{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+
+from{
+    transform:scale(.9);
+    opacity:0;
+}
+
+to{
+    transform:scale(1);
+    opacity:1;
+}
+
+}
+
+/* ===========================
+   MODAL HEADER
+=========================== */
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.close-btn{
+    border:none;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* ===========================
+   GOTRAM LIST
+=========================== */
+
+.modal-body{
+    max-height:420px;
+    overflow:auto;
+}
+
+.gotram-row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 6px;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+}
+
+.gotram-row:last-child{
+    border:none;
+}
+
+/* ===========================
+   POPUP BUTTONS
+=========================== */
+
+.popup-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+.popup-buttons button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.cancel-btn{
+    background:#e5e5e5;
+}
+
+.confirm-btn{
+    background:#1ea84a;
+    color:#fff;
+}
+
+.remove-btn{
+    background:#d93025;
+    color:#fff;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:600px){
+
+.header h1{
+    font-size:23px;
+}
+
+.family-head{
+    font-size:17px;
+}
+
+.members-list li{
+    font-size:14px;
+}
+
+}
