@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Hanuman Bhaktha Mandali - Members Attendance
+    </title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div class="logo">
+
+                🕉️
+
+            </div>
+
+            <h1>
+
+                హనుమాన్ భక్త మండలి
+
+            </h1>
+
+            <p>
+
+                Members Attendance
+
+            </p>
+
+        </header>
+
+        <!-- Search -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Search Gotram / Member">
+
+                <button
+                    id="clearBtn">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+            <button
+                id="gotramBtn"
+                class="gotram-btn">
+
+                📖 Gotram List
+
+            </button>
+
+        </section>
+
+        <!-- Empty State -->
+
+        <section
+            id="emptyState"
+            class="empty-state">
+
+            <div class="search-icon">
+
+                🔍
+
+            </div>
+
+            <h2>
+
+                Search to Continue
+
+            </h2>
+
+            <p>
+
+                Search using
+
+                <br><br>
+
+                • Gotram
+
+                <br>
+
+                • Family Head
+
+                <br>
+
+                • Any Member Name
+
+            </p>
+
+        </section>
+
+        <!-- Search Results -->
+
+        <section
+            id="resultsContainer"
+            class="results-container">
+
+        </section>
+        <!-- ==========================
+             GOTRAM LIST MODAL
+        =========================== -->
+
+        <div id="gotramModal" class="modal">
+
+            <div class="modal-card">
+
+                <div class="modal-header">
+
+                    <h2>📖 Gotram List</h2>
+
+                    <button
+                        id="closeGotramModal"
+                        class="close-btn">
+
+                        ✕
+
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="gotram-row">
+                        <span>కామెళ్ళ</span>
+                        <span>kamella</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>ఇక్ష్వాకుల</span>
+                        <span>ikshvakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పెండ్లికుల</span>
+                        <span>pendlikula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>బలిసెట్ల</span>
+                        <span>balisetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>బలిశెట్ల</span>
+                        <span>balisetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పోగునోళ్ళ</span>
+                        <span>pogunolla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>బుధనకుల</span>
+                        <span>budhanakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>నాభిళ్ళ</span>
+                        <span>nabhilla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>అనంతకుల</span>
+                        <span>ananthakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>కామిశెట్ల</span>
+                        <span>kamishetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పుష్వాల</span>
+                        <span>pushwala</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>సోలంకి కోడాలియా</span>
+                        <span>solanki</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>నాగుల</span>
+                        <span>nagula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పాపాళ</span>
+                        <span>papala</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పౌత్సకుల</span>
+                        <span>pautsakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పౌచ్చకుల</span>
+                        <span>pouchchakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>ఎర్రగుల</span>
+                        <span>erragula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>రెంటకుల</span>
+                        <span>rentakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>చినిశెట్ల</span>
+                        <span>chinishetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>చిన్నిశెట్ల</span>
+                        <span>chinishetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>పునగశిల</span>
+                        <span>punagashila</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>జమ్మి</span>
+                        <span>jammi</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>చంద్రకుల</span>
+                        <span>chandrakula</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>వెలిశెట్ల</span>
+                        <span>velishetla</span>
+                    </div>
+
+                    <div class="gotram-row">
+                        <span>సూర్యకుల</span>
+                        <span>suryakula</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================
+             ATTENDANCE CONFIRM POPUP
+        =========================== -->
+
+        <div
+            id="attendanceModal"
+            class="modal">
+
+            <div class="popup">
+
+                <h2>
+
+                    Confirm Attendance
+
+                </h2>
+
+                <p id="popupMessage">
+
+                    Are you sure?
+
+                </p>
+
+                <div class="popup-buttons">
+
+                    <button
+                        id="cancelBtn"
+                        class="cancel-btn">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        id="confirmBtn"
+                        class="confirm-btn">
+
+                        Confirm
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ===================================
+             REMOVE ATTENDANCE POPUP
+        ==================================== -->
+
+        <div id="removeModal" class="modal">
+
+            <div class="popup">
+
+                <h2>
+
+                    Remove Attendance
+
+                </h2>
+
+                <p id="removePopupMessage">
+
+                    Remove Attendance?
+
+                </p>
+
+                <div class="popup-buttons">
+
+                    <button
+                        id="cancelRemoveBtn"
+                        class="cancel-btn">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        id="removeBtn"
+                        class="remove-btn">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================
+             FAMILY CARD TEMPLATE
+             JavaScript will create cards here
+        ==================================== -->
+
+        <template id="familyCardTemplate">
+
+            <div class="family-card">
+
+                <div class="card-top">
+
+                    <div>
+
+                        <span class="gotram-name">
+
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <input
+                            type="checkbox"
+                            class="attendance-check">
+
+                    </div>
+
+                </div>
+
+                <div class="family-head">
+
+                </div>
+
+                <div class="members-title">
+
+                    Members
+
+                </div>
+
+                <ul class="members-list">
+
+                </ul>
+
+            </div>
+
+        </template>
+
+    </div>
+
+    <!-- ======================
+         JAVASCRIPT FILES
+    ======================= -->
+
+    <script src="families.js"></script>
+
+    <script src="attendance.js"></script>
+
+</body>
+
+</html>
