@@ -225,3 +225,151 @@ function renderFamilyCard(family) {
     resultsContainer.appendChild(card);
 
 }
+// ==========================================
+// CONFIRM ATTENDANCE
+// ==========================================
+
+confirmBtn.addEventListener("click", () => {
+
+    if (!selectedFamily) return;
+
+    selectedFamily.attended = true;
+
+    saveAttendance();
+
+    attendanceModal.style.display = "none";
+
+    refreshSearch();
+
+});
+
+cancelBtn.addEventListener("click", () => {
+
+    attendanceModal.style.display = "none";
+
+    refreshSearch();
+
+});
+
+
+// ==========================================
+// REMOVE ATTENDANCE
+// ==========================================
+
+removeBtn.addEventListener("click", () => {
+
+    if (!selectedFamily) return;
+
+    selectedFamily.attended = false;
+
+    saveAttendance();
+
+    removeModal.style.display = "none";
+
+    refreshSearch();
+
+});
+
+cancelRemoveBtn.addEventListener("click", () => {
+
+    removeModal.style.display = "none";
+
+    refreshSearch();
+
+});
+
+
+// ==========================================
+// LOCAL STORAGE
+// ==========================================
+
+function saveAttendance() {
+
+    localStorage.setItem(
+        "attendanceData",
+        JSON.stringify(families)
+    );
+
+}
+
+function loadAttendance() {
+
+    const saved = localStorage.getItem("attendanceData");
+
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    data.forEach(savedFamily => {
+
+        const family = families.find(f =>
+            f.id === savedFamily.id
+        );
+
+        if (family) {
+
+            family.attended = savedFamily.attended;
+
+        }
+
+    });
+
+}
+
+loadAttendance();
+
+
+// ==========================================
+// REFRESH SEARCH
+// ==========================================
+
+function refreshSearch() {
+
+    const keyword =
+        searchInput.value.trim().toLowerCase();
+
+    if (keyword === "") {
+
+        resultsContainer.innerHTML = "";
+
+        emptyState.style.display = "block";
+
+        return;
+
+    }
+
+    searchFamilies(keyword);
+
+}
+
+
+// ==========================================
+// CLOSE POPUPS
+// ==========================================
+
+window.addEventListener("click", function (e) {
+
+    if (e.target === attendanceModal) {
+
+        attendanceModal.style.display = "none";
+
+        refreshSearch();
+
+    }
+
+    if (e.target === removeModal) {
+
+        removeModal.style.display = "none";
+
+        refreshSearch();
+
+    }
+
+});
+
+
+// ==========================================
+// AUTO FOCUS
+// ==========================================
+
+searchInput.focus();
